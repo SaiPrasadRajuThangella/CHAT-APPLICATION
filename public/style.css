@@ -2,7 +2,7 @@
   /* margin: auto; */
   /* width: 50% */
   padding: 0;
-  margin: 0;
+  margin: 0
 }
 #form {
   display: flex;
@@ -12,12 +12,12 @@
   flex-direction: column;
   padding: 20px;
   height: 60vh;
-  width: 50vw;
+  width: 60vw;
   color: #03696e;
   background-color: #66A5AC;
 
   margin:auto;
-  margin-top: 50px;
+  margin-top: 0px;
   /* margin : 100px; */
   gap: 20px;
 }
@@ -37,6 +37,7 @@
 #chatroom-container {
   display: none;
   position: sticky;
+  flex: 1;
   
 }
 
@@ -46,6 +47,7 @@
   justify-content: center;
   /* align-items: center; */
   margin: auto;
+  height: 100vh;
 }
 
 #joined-chat{
@@ -153,4 +155,17 @@
   font-size: 11px;
   background-color: transparent !important;
                                                  
+}
+
+
+@media (max-width: 600px) {
+  #chatroom-container {
+    width: 100%;
+    height: max-content;
+    max-width: none;/* Adjust width for smaller screens */
+    /* max-width: none; Remove max-width restriction */
+  }
+  /* #Messages{
+    height: 100%
+  } */
 }

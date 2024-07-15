@@ -18,6 +18,7 @@ btn.addEventListener("click", (event) => {
   } else {
     form.style.display = "none";
     chatroomContainer.style.display = "block";
+    socket.emit("joined",username)
   }
 });
 let message = "";
@@ -32,9 +33,12 @@ function sendMessage() {
   if (message) {
     socket.emit("messageSent", { message, username });
     messageInput.value = "";
+
+    
   } else {
     alert("Please enter message");
   }
+
 }
 
 messageInput.addEventListener("keydown", (e) => {
@@ -44,10 +48,18 @@ messageInput.addEventListener("keydown", (e) => {
   }
 });
 
+socket.on("joined",(newUser)=>{
+  
+    console.log("userhas joined")
+    messageContainer.innerHTML += `<h3 id="joined-chat">"${newUser}" has joined this chat! </h3>`;
+  
+
+})
+
 socket.on("messageSent", (data) => {
   if (data.username === username) {
     renderMessage(data, true);
-  } else {
+  } else { 
     renderMessage(data, false);
   }
   // console.log(data);
@@ -59,4 +71,9 @@ function renderMessage(data, mine) {
   } else {
     messageContainer.innerHTML += `<div class="Message recieved" id="UsernameProperty" >${data.username}:</div> <div class="Message recieved">${data.message}</div>`;
   }
+  scrollToBottom();
+}
+
+function scrollToBottom() {
+  messageContainer.scrollTop = messageContainer.scrollHeight;
 }

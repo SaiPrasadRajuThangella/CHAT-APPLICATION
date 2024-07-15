@@ -14,6 +14,10 @@
         socket.on("messageSent",(data)=>{
             io.emit("messageSent",data)
         })
+
+        socket.on("joined",(data)=>{
+            io.emit("joined",data)
+        })
     })
     app.use(express.static("public"))
 

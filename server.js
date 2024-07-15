@@ -10,6 +10,8 @@
     const io = new Server(server)
     // console.log(io)
 
+    console.log(__dirname)
+
     io.on("connection",(socket)=>{
         // console.log("new commection hapopped",socket.id)
         socket.on("messageSent",(data)=>{
@@ -23,7 +25,7 @@
     app.use(express.static(path.join(__dirname,"public")))
 
     server.listen(PORT,()=>{
-        console.log(`server has been running on http://localhost:${PORT} `)
+        // console.log(`server has been running on http://localhost:${PORT} `)
 
     }) 
 

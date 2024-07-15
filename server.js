@@ -4,6 +4,7 @@
     const http = require('http');
     const { Server }  = require("socket.io") 
     const PORT = 9000;
+    const path = require("path")
 
     const server = http.createServer(app);  
     const io = new Server(server)
@@ -19,7 +20,7 @@
             io.emit("joined",data)
         })
     })
-    app.use(express.static("public"))
+    app.use(express.static(path.join(__dirname,"public")))
 
     server.listen(PORT,()=>{
         console.log(`server has been running on http://localhost:${PORT} `)

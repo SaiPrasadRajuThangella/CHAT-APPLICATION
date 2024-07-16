@@ -50,8 +50,12 @@ messageInput.addEventListener("keydown", (e) => {
 
 socket.on("joined",(newUser)=>{
   
-    console.log("userhas joined")
-    messageContainer.innerHTML += `<h3 id="joined-chat">"${newUser}" has joined this chat! </h3>`;
+    if(newUser === username){
+      messageContainer.innerHTML += `<h3 id="joined-chat">"You have joined this chat! </h3>`;
+    }else{
+      messageContainer.innerHTML += `<h3 id="joined-chat">"${newUser}" has joined this chat! </h3>`;
+    }
+    
   
 
 })

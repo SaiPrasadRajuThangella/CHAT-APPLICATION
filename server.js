@@ -3,11 +3,17 @@
     const app =express();
     const http = require('http');
     const { Server }  = require("socket.io") 
-    const PORT = 9000;
+    const PORT = process.env.PORT || 9000;
+
     const path = require("path")
 
     const server = http.createServer(app);  
-    const io = new Server(server)
+    const io = new Server(server,{
+        cors: {
+            origin: "http://localhost:9000", // Update with your frontend domain
+            methods: ["GET", "POST"]
+          }
+    })
     // console.log(io)
 
     console.log(__dirname)
